@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyard Primeur — Vos courses de fruits & légumes frais | Saint-Égrève & Varces</title>
+  <meta name="description" content="Commandez en ligne chez Lyard Primeur : fruits & légumes en direct des producteurs, paniers de saison, plateaux traiteur et paniers anti-gaspi. Retrait 1h ou livraison en Isère." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #047857;
+      --primary-light: #ecfdf5;
+      --accent: #f97316;
+      --accent-light: #fff7ed;
+      --dark: #111827;
+      --gray-900: #1f2937;
+      --gray-700: #374151;
+      --gray-500: #6b7280;
+      --gray-200: #e5e7eb;
+      --gray-100: #f3f4f6;
+      --gray-50: #f9fafb;
+      --white: #ffffff;
+      --red: #ef4444;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--gray-50);
+      color: var(--dark);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+
+    /* Top Strip */
+    .top-strip {
+      background-color: var(--dark);
+      color: #d1d5db;
+      font-size: 0.8rem;
+      padding: 0.45rem 1.5rem;
+    }
+    .top-strip-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .top-strip a { color: #9ca3af; transition: color 0.2s; }
+    .top-strip a:hover { color: var(--white); }
+    .top-strip .highlight { color: #34d399; font-weight: 600; }
+
+    /* Main Header */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .main-header {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 1.45rem;
+      letter-spacing: -0.5px;
+      color: var(--dark);
+    }
+    .brand-logo .dot { color: var(--primary); }
+    .brand-logo .sub {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-top: -3px;
+    }
+
+    .location-picker {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      padding: 0.5rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .location-picker:hover { background: var(--white); border-color: var(--primary); }
+    .location-picker .loc-title { font-weight: 700; color: var(--dark); }
+
+    .search-box {
+      flex-grow: 1;
+      max-width: 540px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      background: var(--gray-100);
+      border: 1px solid transparent;
+      padding: 0.65rem 1rem 0.65rem 2.6rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      color: var(--dark);
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-box input:focus {
+      background: var(--white);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-500);
+    }
+
+    .header-actions { display: flex; align-items: center; gap: 1.25rem; }
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .cart-btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.6rem 1.15rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cart-btn:hover { background: var(--primary-dark); }
+    .cart-pill {
+      background: var(--white);
+      color: var(--primary);
+      border-radius: 9999px;
+      padding: 0.1rem 0.45rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    /* Category Nav */
+    .category-nav { background: var(--white); border-bottom: 1px solid var(--gray-200); }
+    .category-nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 1.75rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .category-nav-inner::-webkit-scrollbar { display: none; }
+    .nav-pill {
+      padding: 0.75rem 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-pill:hover, .nav-pill.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .nav-pill.promo-pill { color: var(--accent); }
+    .nav-pill.promo-pill:hover, .nav-pill.promo-pill.active { border-bottom-color: var(--accent); }
+
+    main { max-width: 1320px; margin: 0 auto; padding: 1.75rem 1.5rem 4rem; }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(105deg, #064e3b 0%, #065f46 55%, #047857 100%);
+      border-radius: 16px;
+      color: var(--white);
+      padding: 3rem 3.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-badge-tag {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content h1 {
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 span { color: #6ee7b7; }
+    .hero-content p { font-size: 1.05rem; color: #d1fae5; margin-bottom: 1.75rem; max-width: 540px; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-solid-white {
+      background: var(--white);
+      color: #064e3b;
+      padding: 0.75rem 1.6rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-solid-white:hover { background: #f0fdf4; transform: translateY(-2px); }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.7);
+      padding: 0.75rem 1.6rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
+
+    .hero-visual { display: flex; justify-content: center; }
+    .hero-img-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.25rem;
+      color: var(--dark);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.25);
+      max-width: 340px;
+      width: 100%;
+    }
+    .hero-img-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 0.75rem; }
+    .badge-arrival {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+    .hero-img-card .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.75rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--gray-200);
+    }
+    .hero-img-card .price-val { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+
+    /* Trust Highlights */
+    .trust-strip {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 1.25rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .trust-item { display: flex; align-items: center; gap: 0.9rem; }
+    .trust-icon {
+      width: 44px; height: 44px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .trust-text h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+    .trust-text p { font-size: 0.8rem; color: var(--gray-500); }
+
+    /* Products Grid */
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; }
+    .section-head h2 { font-size: 1.45rem; font-weight: 800; color: var(--dark); }
+    .section-head p { font-size: 0.85rem; color: var(--gray-500); margin-top: 0.2rem; }
+    .view-all-link { color: var(--primary); font-weight: 700; font-size: 0.85rem; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: #cbd5e1; }
+    .card-media { position: relative; height: 190px; background: #f8fafc; overflow: hidden; }
+    .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .product-card:hover .card-media img { transform: scale(1.05); }
+
+    .badge-float {
+      position: absolute; top: 0.65rem; left: 0.65rem; z-index: 2;
+      display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-start;
+    }
+    .tag-promo { background: var(--red); color: var(--white); font-size: 0.7rem; font-weight: 800; padding: 0.25rem 0.55rem; border-radius: 6px; }
+    .tag-bio { background: #15803d; color: var(--white); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.55rem; border-radius: 6px; }
+    .tag-antigaspi { background: var(--accent); color: var(--white); font-size: 0.7rem; font-weight: 800; padding: 0.25rem 0.55rem; border-radius: 6px; }
+
+    .card-info { padding: 1rem 1.15rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .origin-tag { font-size: 0.75rem; font-weight: 600; color: var(--gray-500); margin-bottom: 0.3rem; }
+    .product-title { font-size: 0.95rem; font-weight: 700; color: var(--gray-900); line-height: 1.35; margin-bottom: 0.35rem; min-height: 2.7rem; }
+    .unit-info { font-size: 0.8rem; color: var(--gray-500); margin-bottom: 0.85rem; }
+
+    .card-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--gray-100);
+    }
+    .price-block { display: flex; flex-direction: column; }
+    .main-price { font-size: 1.25rem; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
+    .price-kilo { font-size: 0.75rem; color: var(--gray-500); }
+    .old-price { text-decoration: line-through; color: var(--gray-500); font-size: 0.8rem; }
+
+    .btn-add-stepper {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px solid rgba(5, 150, 105, 0.25);
+      border-radius: 9999px;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-add-stepper:hover { background: var(--primary); color: var(--white); }
+
+    /* Promo Highlight Banner */
+    .promo-highlight-banner {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border: 1px solid #fed7aa;
+      border-radius: 16px;
+      padding: 2.25rem;
+      margin-bottom: 3.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 2rem;
+    }
+    .promo-highlight-banner h3 { font-size: 1.6rem; color: #9a3412; font-weight: 800; margin-bottom: 0.6rem; }
+    .promo-highlight-banner p { color: #7c2d12; font-size: 0.95rem; margin-bottom: 1.25rem; max-width: 520px; }
+
+    /* Stores Section */
+    .stores-section {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .stores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+    .store-box { border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.75rem; background: var(--gray-50); }
+    .store-badge {
+      background: var(--primary-light); color: var(--primary);
+      padding: 0.25rem 0.65rem; border-radius: 6px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.75rem; display: inline-block;
+    }
+    .store-box h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .store-meta { font-size: 0.85rem; color: var(--gray-700); display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+
+    /* Customer Reviews */
+    .reviews-strip {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; box-shadow: var(--shadow-sm);
+    }
+    .reviews-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 1rem; }
+    .stars-score { font-size: 1.75rem; font-weight: 800; }
+    .stars-icons { color: #f59e0b; font-size: 1.1rem; letter-spacing: 2px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .review-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1.25rem; }
+    .review-author { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .review-comment { font-size: 0.85rem; color: var(--gray-700); line-height: 1.45; }
+
+    /* Cart Drawer */
+    .cart-drawer-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(17, 24, 39, 0.6); backdrop-filter: blur(4px);
+      z-index: 250; display: none; justify-content: flex-end;
+    }
+    .cart-drawer {
+      background: var(--white); width: 100%; max-width: 440px; height: 100%;
+      display: flex; flex-direction: column; box-shadow: -8px 0 30px rgba(0,0,0,0.2);
+    }
+    .cart-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .close-cart-btn {
+      background: var(--gray-100); border: none; width: 32px; height: 32px;
+      border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .free-shipping-bar {
+      background: var(--primary-light); padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid rgba(5, 150, 105, 0.15); font-size: 0.8rem; font-weight: 600; color: var(--primary-dark);
+    }
+    .shipping-progress { width: 100%; height: 6px; background: rgba(5, 150, 105, 0.2); border-radius: 9999px; margin-top: 0.35rem; overflow: hidden; }
+    .shipping-fill { height: 100%; background: var(--primary); width: 0%; border-radius: 9999px; transition: width 0.3s; }
+    .cart-body { flex-grow: 1; overflow-y: auto; padding: 1.25rem 1.5rem; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--gray-200); gap: 1rem; }
+    .cart-item-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .cart-item-price { font-weight: 800; color: var(--primary); font-size: 0.95rem; }
+    .cart-footer { padding: 1.5rem; border-top: 1px solid var(--gray-200); background: var(--gray-50); }
+    .cart-total-row { display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; }
+    .btn-checkout {
+      width: 100%; background: var(--primary); color: var(--white);
+      border: none; padding: 0.9rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-checkout:hover { background: var(--primary-dark); }
+
+    /* Footer */
+    footer { background: var(--dark); color: #9ca3af; padding: 4.5rem 1.5rem 2.5rem; font-size: 0.85rem; }
+    .footer-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); gap: 3rem; margin-bottom: 3.5rem;
+    }
+    .footer-col h4 { color: var(--white); font-size: 0.95rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.65rem; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1320px; margin: 0 auto; border-top: 1px solid #374151; padding-top: 2rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #6b7280; font-size: 0.8rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-banner { grid-template-columns: 1fr; padding: 2rem; }
+      .hero-visual { display: none; }
+      .stores-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .main-header { flex-wrap: wrap; gap: 0.75rem; }
+      .search-box { order: 3; max-width: 100%; width: 100%; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .promo-highlight-banner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div class="top-strip-inner">
+      <div>
+        ⚡ <span class="highlight">Click & Collect 1h</span> à Saint-Égrève et Varces &nbsp;|&nbsp; Livraison à domicile offerte dès 50 €
+      </div>
+      <div style="display: flex; gap: 1.25rem;">
+        <a href="#magasins">Nos 2 Magasins (Isère)</a>
+        <a href="https://www.facebook.com/Lyard.Primeur/" target="_blank" rel="noopener noreferrer">Facebook Officiel ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="main-header">
+      <a href="#" class="brand-logo">
+        <div>
+          LYARD<span class="dot">.</span>
+          <span class="sub">Primeur Indépendant</span>
+        </div>
+      </a>
+
+      <div class="location-picker" onclick="alert('Retrait en magasin : 1. Saint-Égrève (19 Av. Général de Gaulle) | 2. Varces (Centre-ville)');">
+        <span style="color: var(--primary);">📍</span>
+        <div>
+          <span style="font-size: 0.7rem; color: var(--gray-500); display: block; line-height: 1;">Retrait ou Livraison</span>
+          <span class="loc-title">Saint-Égrève & Varces</span>
+        </div>
+        <span style="font-size: 0.7rem; color: var(--gray-500);">▼</span>
+      </div>
+
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="site-search" placeholder="Rechercher un fruit, un légume, une corbeille..." oninput="handleSearch(this.value)" />
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn" onclick="alert('Espace client Lyard Primeur.');">
+          <span style="font-size: 1.25rem;">👤</span>
+          <span>Compte</span>
+        </button>
+
+        <button class="cart-btn" id="open-cart-btn">
+          <span>Panier</span>
+          <span class="cart-pill" id="cart-qty">0</span>
+          <span id="cart-header-total" style="font-size: 0.85rem; font-weight: 600;">0,00 €</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Nav -->
+    <nav class="category-nav">
+      <div class="category-nav-inner">
+        <div class="nav-pill active" onclick="filterCategory('all', this)">Tous les produits</div>
+        <div class="nav-pill" onclick="filterCategory('paniers', this)">🧺 Paniers & Corbeilles</div>
+        <div class="nav-pill" onclick="filterCategory('fruits', this)">🍎 Fruits de Saison</div>
+        <div class="nav-pill" onclick="filterCategory('legumes', this)">🥕 Légumes Maraîchers</div>
+        <div class="nav-pill promo-pill" onclick="filterCategory('antigaspi', this)">⚡ Réflexe Anti-Gaspi</div>
+        <div class="nav-pill" onclick="filterCategory('plateaux', this)">🍇 Plateaux Réceptions</div>
+        <div class="nav-pill" onclick="filterCategory('pro', this)">🏢 Offre Entreprises</div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Banner Mon-Marché -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <div class="hero-badge-tag">🌱 Circuit Court & Terroirs d'Isère</div>
+        <h1>Le meilleur du primeur,<br /><span>préparé chaque matin</span></h1>
+        <p>
+          Fruits mûris sur l'arbre, légumes de maraîchers partenaires et corbeilles signature. Commandez en ligne et retirez en magasin à Saint-Égrève ou Varces, ou faites-vous livrer directement chez vous.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-solid-white" onclick="document.getElementById('catalogue').scrollIntoView({behavior: 'smooth'})">Faire mes courses</button>
+          <button class="btn-outline-white" onclick="filterCategory('antigaspi')">Découvrir l'Anti-Gaspi</button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-card">
+          <span class="badge-arrival">Arrivage du Jour</span>
+          <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80" alt="Corbeille du Verger Lyard" />
+          <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">Panier Signature Verger & Terroir</h4>
+          <p style="font-size: 0.8rem; color: var(--gray-500);">Pommes d'Isère, poires, raisins et clémentines bio (4,5 kg)</p>
+          <div class="price-row">
+            <div>
+              <span class="price-val">24,90 €</span>
+              <span style="font-size: 0.75rem; color: var(--gray-500); display: block;">5,53 €/kg</span>
+            </div>
+            <button class="btn-add-stepper" onclick="addProduct('Panier Signature Verger & Terroir', 24.90, '5,53 €/kg')">+ Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Highlights -->
+    <div class="trust-strip">
+      <div class="trust-item">
+        <div class="trust-icon">🌱</div>
+        <div class="trust-text">
+          <h4>En Direct des Maraîchers</h4>
+          <p>Producteurs locaux d'Isère & région AURA</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⚡</div>
+        <div class="trust-text">
+          <h4>Retrait Express 1h</h4>
+          <p>Dans nos magasins de Saint-Égrève et Varces</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🍎</div>
+        <div class="trust-text">
+          <h4>Goûté & Sélectionné</h4>
+          <p>Contrôle de maturité chaque matin</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⭐</div>
+        <div class="trust-text">
+          <h4>4,8 / 5 Avis Clients</h4>
+          <p>Plébiscité par nos clients en Isère</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catalogue Produits -->
+    <section id="catalogue">
+      <div class="section-head">
+        <div>
+          <h2>Nos Paniers & Arrivages Frais</h2>
+          <p>Sélectionnés selon les récoltes du jour et préparés au pic de leur maturité</p>
+        </div>
+        <a href="#magasins" class="view-all-link">Consulter nos 2 magasins →</a>
+      </div>
+
+      <div class="product-grid" id="product-container">
+
+        <!-- Produit 1 -->
+        <div class="product-card" data-cat="paniers">
+          <div class="card-media">
+            <div class="badge-float"><span class="tag-bio">BIO & LOCAL</span></div>
+            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=600&q=80" alt="Panier Terroir Isère" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">🇫🇷 France · Maraîchers d'Isère</div>
+            <h3 class="product-title">Le Panier Équilibre du Verger</h3>
+            <div class="unit-info">Corbeille familiale · 5 kg net</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <span class="main-price">26,00 €</span>
+                <span class="price-kilo">5,20 €/kg</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('Le Panier Équilibre du Verger', 26.00, '5,20 €/kg')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 2 -->
+        <div class="product-card" data-cat="antigaspi">
+          <div class="card-media">
+            <div class="badge-float"><span class="tag-antigaspi">ANTI-GASPI -45%</span></div>
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Panier Réflexe Anti-Gaspi" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">🇫🇷 France · Sélection du Jour</div>
+            <h3 class="product-title">Le Panier Réflexe Anti-Gaspillage</h3>
+            <div class="unit-info">Fruits très mûrs et sucrés · 3,5 kg</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <div>
+                  <span class="main-price">12,50 €</span>
+                  <span class="old-price">22,00 €</span>
+                </div>
+                <span class="price-kilo">3,57 €/kg</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('Le Panier Réflexe Anti-Gaspillage', 12.50, '3,57 €/kg')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 3 -->
+        <div class="product-card" data-cat="paniers">
+          <div class="card-media">
+            <div class="badge-float"><span class="tag-promo">SÉLECTION PREMIUM</span></div>
+            <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=600&q=80" alt="Panier Exotique Solaire" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">✈️ Sélection Import Extra & France</div>
+            <h3 class="product-title">Le Panier Exotique & Solaire</h3>
+            <div class="unit-info">Ananas Victoria, mangue avion, fruits de la passion</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <span class="main-price">34,90 €</span>
+                <span class="price-kilo">La corbeille 3,2 kg</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('Le Panier Exotique & Solaire', 34.90, 'La corbeille 3,2 kg')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 4 -->
+        <div class="product-card" data-cat="fruits">
+          <div class="card-media">
+            <div class="badge-float"><span class="tag-bio">BIO FR</span></div>
+            <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80" alt="Pommes d'Isère" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">🇫🇷 France · Vergers Dauphinois</div>
+            <h3 class="product-title">Pommes Gala Bio Croquantes</h3>
+            <div class="unit-info">Le sachet de 1,5 kg</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <span class="main-price">4,20 €</span>
+                <span class="price-kilo">2,80 €/kg</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('Pommes Gala Bio Croquantes', 4.20, '2,80 €/kg')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 5 -->
+        <div class="product-card" data-cat="legumes">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=600&q=80" alt="Panier Maraîcher Semaine" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">🇫🇷 France · Récolte de la veille</div>
+            <h3 class="product-title">Le Panier Maraîcher de la Semaine</h3>
+            <div class="unit-info">Carottes fanes, poireaux, courgettes, pommes de terre (6 kg)</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <span class="main-price">19,90 €</span>
+                <span class="price-kilo">3,31 €/kg</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('Le Panier Maraîcher de la Semaine', 19.90, '3,31 €/kg')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 6 -->
+        <div class="product-card" data-cat="plateaux">
+          <div class="card-media">
+            <div class="badge-float"><span class="tag-promo">BUFFET & RÉCEPTION</span></div>
+            <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=600&q=80" alt="Plateau Fruits Découpés" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">🔪 Préparé le matin même en magasin</div>
+            <h3 class="product-title">Plateau de Fruits Frais Découpés</h3>
+            <div class="unit-info">Prêt à déguster · Format 8 à 10 personnes</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <span class="main-price">42,00 €</span>
+                <span class="price-kilo">Plateau traiteur</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('Plateau de Fruits Frais Découpés', 42.00, 'Plateau traiteur')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 7 -->
+        <div class="product-card" data-cat="pro">
+          <div class="card-media">
+            <div class="badge-float"><span class="tag-bio">ENTREPRISES</span></div>
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80" alt="Corbeille Bureau Vitamines" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">🏢 Pause café saine en entreprise</div>
+            <h3 class="product-title">La Corbeille Bureau & Coworking</h3>
+            <div class="unit-info">Fruits individuels faciles à manger (bananes, clémentines, pommes) · 6 kg</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <span class="main-price">32,00 €</span>
+                <span class="price-kilo">Facturation pro</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('La Corbeille Bureau & Coworking', 32.00, 'Facturation pro')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 8 -->
+        <div class="product-card" data-cat="fruits">
+          <div class="card-media">
+            <div class="badge-float"><span class="tag-promo">-20% ARRIVAGE</span></div>
+            <img src="https://images.unsplash.com/photo-1596363505729-4190a9506133?auto=format&fit=crop&w=600&q=80" alt="Raisin Muscat de Table" />
+          </div>
+          <div class="card-info">
+            <div class="origin-tag">🇫🇷 France · Vaucluse / Isère</div>
+            <h3 class="product-title">Raisin Muscat de Table Noir Extra</h3>
+            <div class="unit-info">La barquette de 750 g</div>
+            <div class="card-bottom">
+              <div class="price-block">
+                <div>
+                  <span class="main-price">3,95 €</span>
+                  <span class="old-price">4,90 €</span>
+                </div>
+                <span class="price-kilo">5,26 €/kg</span>
+              </div>
+              <button class="btn-add-stepper" onclick="addProduct('Raisin Muscat de Table Noir Extra', 3.95, '5,26 €/kg')">+ Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bannière Anti-Gaspi -->
+    <div class="promo-highlight-banner">
+      <div>
+        <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #c2410c; letter-spacing: 0.5px;">Engagement Éco-Responsable</span>
+        <h3>Sauvez des fruits avec notre Réflexe Anti-Gaspi</h3>
+        <p>
+          Chez Lyard Primeur, aucun fruit de qualité n'est jeté. Nous composons chaque matin des paniers à prix coûtant avec nos fruits mûrs à point, parfaits pour vos compotes, jus frais ou desserts du soir.
+        </p>
+        <button class="btn-add-stepper" style="background: #ea580c; color: white; border: none; padding: 0.75rem 1.5rem;" onclick="filterCategory('antigaspi')">
+          Voir les offres Anti-Gaspi du jour
+        </button>
+      </div>
+      <div style="text-align: center;">
+        <div style="background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #fed7aa; display: inline-block; text-align: left;">
+          <div style="font-weight: 800; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.35rem;">Arrivages en direct</div>
+          <div style="font-size: 0.85rem; color: var(--gray-700); margin-bottom: 0.75rem;">Consultez les photos de nos étals publiées chaque jour par notre équipe :</div>
+          <a href="https://www.facebook.com/Lyard.Primeur/" target="_blank" rel="noopener noreferrer" style="color: #ea580c; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+            Facebook Lyard Primeur ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Magasins -->
+    <section id="magasins" class="stores-section">
+      <div class="section-head" style="margin-bottom: 0.5rem;">
+        <div>
+          <h2>Nos Magasins en Isère</h2>
+          <p>Choisissez votre point de retrait Click & Collect gratuit ou faites-vous livrer</p>
+        </div>
+      </div>
+
+      <div class="stores-grid">
+        <div class="store-box">
+          <span class="store-badge">Boutique Principale</span>
+          <h3>Lyard Primeur Saint-Égrève</h3>
+          <div class="store-meta">
+            <div>📍 <strong>Adresse :</strong> 19 Avenue du Général de Gaulle, 38120 Saint-Égrève</div>
+            <div>📞 <strong>Téléphone :</strong> 04 76 75 00 00</div>
+            <div>🕒 <strong>Horaires :</strong> Mardi au Samedi 8h00 - 19h00 | Dimanche 8h30 - 12h30</div>
+            <div>🚗 <strong>Services :</strong> Parking dédié gratuit, accès PMR, retrait 1h</div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lyard+Primeur+Saint-Egreve" target="_blank" class="btn-add-stepper" style="display: inline-flex; justify-content: center; width: 100%;">
+            Itinéraire Google Maps ↗
+          </a>
+        </div>
+
+        <div class="store-box">
+          <span class="store-badge">Boutique Varces</span>
+          <h3>Lyard Primeur de Varces</h3>
+          <div class="store-meta">
+            <div>📍 <strong>Adresse :</strong> Centre-ville, 38760 Varces-Allières-et-Risset</div>
+            <div>📞 <strong>Téléphone :</strong> 04 76 75 00 00</div>
+            <div>🕒 <strong>Horaires :</strong> Mardi au Samedi 8h30 - 12h30 et 15h30 - 19h00</div>
+            <div>🧺 <strong>Services :</strong> Retrait Click & Collect et plateaux réceptions</div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lyard+Primeur+Varces" target="_blank" class="btn-add-stepper" style="display: inline-flex; justify-content: center; width: 100%;">
+            Itinéraire Google Maps ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avis Clients -->
+    <div class="reviews-strip">
+      <div class="reviews-head">
+        <div>
+          <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.25rem;">Ce que disent nos clients</h2>
+          <p style="font-size: 0.85rem; color: var(--gray-500);">Avis vérifiés collectés en magasin et sur nos réseaux</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div class="stars-score">4,8 / 5</div>
+          <div>
+            <div class="stars-icons">★★★★★</div>
+            <div style="font-size: 0.75rem; color: var(--gray-500);">+450 clients fidèles en Isère</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div style="color: #f59e0b; margin-bottom: 0.35rem;">★★★★★</div>
+          <div class="review-author">Marc D. · Saint-Égrève</div>
+          <p class="review-comment">« Rien à voir avec la grande distribution. Les fruits ont un vrai parfum, les corbeilles sont impeccables et l’équipe est toujours de bon conseil. »</p>
+        </div>
+        <div class="review-card">
+          <div style="color: #f59e0b; margin-bottom: 0.35rem;">★★★★★</div>
+          <div class="review-author">Camille V. · Varces</div>
+          <p class="review-comment">« Je prends chaque semaine le panier anti-gaspi et des légumes de saison. C'est très économique, ultra frais et on évite le gaspillage alimentaire. »</p>
+        </div>
+        <div class="review-card">
+          <div style="color: #f59e0b; margin-bottom: 0.35rem;">★★★★★</div>
+          <div class="review-author">Cabinet Avocats Grenoble (Offre Pro)</div>
+          <p class="review-comment">« Livraison hebdomadaire au bureau d'une corbeille de 6 kg. Les collaborateurs adorent et le service client est irréprochable. »</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Tiroir Panier -->
+  <div class="cart-drawer-overlay" id="cart-drawer">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>Mon Panier (<span id="cart-drawer-count">0</span>)</h3>
+        <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+      </div>
+
+      <div class="free-shipping-bar" id="shipping-banner">
+        <span id="shipping-text">Ajoutez 50,00 € pour la livraison offerte !</span>
+        <div class="shipping-progress">
+          <div class="shipping-fill" id="shipping-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="cart-body" id="cart-items-container">
+        <p style="text-align: center; color: var(--gray-500); margin-top: 3rem; font-size: 0.95rem;">
+          Votre panier est actuellement vide.<br />
+          <span style="font-size: 0.8rem;">Découvrez nos paniers et fruits de saison !</span>
+        </p>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Sous-total TTC :</span>
+          <span id="cart-total-amount">0,00 €</span>
+        </div>
+        <button class="btn-checkout" onclick="handleCheckout()">
+          Passer ma commande
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div style="font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 0.75rem;">
+          LYARD<span style="color: var(--primary);">.</span> Primeur
+        </div>
+        <p style="margin-bottom: 1.25rem; line-height: 1.6;">
+          Primeur indépendant de référence dans l'agglomération grenobloise. Sélection rigoureuse de fruits & légumes frais, paniers vitaminés et démarche anti-gaspi.
+        </p>
+        <p style="color: #6ee7b7; font-weight: 600;">Magasins à Saint-Égrève & Varces</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Rayons & Paniers</h4>
+        <ul>
+          <li><a href="#catalogue">Paniers de fruits du verger</a></li>
+          <li><a href="#catalogue">Paniers de légumes maraîchers</a></li>
+          <li><a href="#catalogue">Plateaux traiteur découpés</a></li>
+          <li><a href="#catalogue">Offre Anti-Gaspillage</a></li>
+          <li><a href="#catalogue">Corbeilles pour entreprises</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Nos Établissements</h4>
+        <ul>
+          <li>19 Av. du Général de Gaulle, 38120 Saint-Égrève</li>
+          <li>Centre-ville, 38760 Varces-Allières-et-Risset</li>
+          <li>Tél : 04 76 75 00 00</li>
+          <li>Email : contact@lyard-primeur.fr</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Suivez Notre Actualité</h4>
+        <p style="margin-bottom: 1rem;">Consultez les photos des arrivages du jour sur notre page Facebook officielle :</p>
+        <a href="https://www.facebook.com/Lyard.Primeur/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #1877f2; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600;">
+          Page Facebook Lyard Primeur ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Lyard Primeur — Tous droits réservés. Commerce de fruits et légumes d'Isère.</div>
+      <div>Paiements 100% sécurisés · Retrait gratuit 1h</div>
+    </div>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    const cartDrawer = document.getElementById('cart-drawer');
+    const openCartBtn = document.getElementById('open-cart-btn');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    const cartQtyPill = document.getElementById('cart-qty');
+    const cartHeaderTotal = document.getElementById('cart-header-total');
+    const cartDrawerCount = document.getElementById('cart-drawer-count');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalAmount = document.getElementById('cart-total-amount');
+    const shippingText = document.getElementById('shipping-text');
+    const shippingFill = document.getElementById('shipping-fill');
+
+    function openCart() { cartDrawer.style.display = 'flex'; }
+    function closeCart() { cartDrawer.style.display = 'none'; }
+
+    openCartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+    cartDrawer.addEventListener('click', (e) => {
+      if (e.target === cartDrawer) closeCart();
+    });
+
+    function addProduct(title, price, unit) {
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price, unit, qty: 1 });
+      }
+      renderCart();
+      openCart();
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+      cartQtyPill.textContent = totalCount;
+      cartDrawerCount.textContent = totalCount;
+      cartHeaderTotal.textContent = totalPrice.toFixed(2) + " €";
+      cartTotalAmount.textContent = totalPrice.toFixed(2) + " €";
+
+      const freeThreshold = 50.0;
+      if (totalPrice >= freeThreshold) {
+        shippingText.innerHTML = "🎉 Félicitations ! Votre livraison est <strong>offerte</strong>.";
+        shippingFill.style.width = "100%";
+      } else {
+        const remaining = (freeThreshold - totalPrice).toFixed(2);
+        const percent = Math.min(100, Math.round((totalPrice / freeThreshold) * 100));
+        shippingText.innerHTML = `Ajoutez <strong>${remaining} €</strong> pour bénéficier de la livraison offerte !`;
+        shippingFill.style.width = percent + "%";
+      }
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+          <p style="text-align: center; color: var(--gray-500); margin-top: 3rem; font-size: 0.95rem;">
+            Votre panier est actuellement vide.<br />
+            <span style="font-size: 0.8rem;">Découvrez nos paniers et fruits de saison !</span>
+          </p>
+        `;
+        return;
+      }
+
+      cartItemsContainer.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item">
+          <div style="flex-grow: 1;">
+            <div class="cart-item-name">${item.title}</div>
+            <div style="font-size: 0.75rem; color: var(--gray-500); margin-bottom: 0.35rem;">${item.unit}</div>
+            <div class="cart-item-price">${(item.price * item.qty).toFixed(2)} €</div>
+          </div>
+          <div style="display: flex; align-items: center; background: var(--gray-100); border-radius: 9999px; border: 1px solid var(--gray-200);">
+            <button onclick="changeQty(${idx}, -1)" style="border:none; background:none; padding: 0.35rem 0.65rem; font-weight:bold; cursor:pointer;">-</button>
+            <span style="font-size: 0.85rem; font-weight: 700; padding: 0 0.35rem;">${item.qty}</span>
+            <button onclick="change padding: 0 0.35rem;">${item.qty}</span>
+            <button onclick="changeQty(${idx}, 1)" style="border:none; background:none; padding: 0.35rem 0.65rem; font-weight:bold; cursor:pointer;">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCategory(cat, element) {
+      if (element) {
+        document.querySelectorAll('.nav-pill').forEach(pill => pill.classList.remove('active'));
+        element.classList.add('active');
+      }
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      document.getElementById('catalogue').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleSearch(term) {
+      const q = term.toLowerCase().trim();
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    function handleCheckout() {
+      if (cart.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+      }
+      alert("Votre commande a été transmise à Lyard Primeur !\nUn récapitulatif avec le créneau de retrait / livraison vous sera envoyé par SMS.");
+      cart = [];
+      renderCart();
+      closeCart();
+    }
+  </script>
+</body>
+</html>
